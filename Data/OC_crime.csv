@@ -1,0 +1,43 @@
+,Department_Name,State,Ori,City,Agg_Assult,Sex_Offences,Manslaughter_Neg,Murder_and_Nonneg_Man,Rape,Robbery,Simp_Assult,Humman_Trafficking_Commercial_SA,Humman_Trafficking_Invol_Ser,Offences_Total
+0,Anaheim Police Department,CA,CA0300100,Anaheim,737,113,1,15,23,155,775,0,0,1819
+1,Brea Police Department,CA,CA0300200,Brea,24,7,0,0,0,5,86,0,0,122
+2,Buena Park Police Department,CA,CA0300300,Buena Park,97,21,0,1,4,28,140,0,0,291
+3,Costa Mesa Police Department,CA,CA0300400,Costa Mesa,204,34,0,0,6,45,146,0,0,435
+4,Cypress Police Department,CA,CA0300500,Cypress,48,6,0,1,2,4,29,0,0,90
+5,La Palma Police Department,CA,CA0300600,La Palma,20,3,0,0,0,3,27,0,0,53
+6,Fountain Valley Police Department,CA,CA0300700,Fountain Valley,50,2,0,0,1,10,80,0,0,143
+7,Fullerton Police Department,CA,CA0300800,Fullerton,308,53,2,2,12,43,541,0,0,961
+8,Garden Grove Police Department,CA,CA0300900,Garden Grove,282,43,0,9,18,68,238,0,0,658
+9,Huntington Beach Police Department,CA,CA0301000,Huntington Beach,267,40,1,2,4,53,447,0,0,814
+10,Laguna Beach Police Department,CA,CA0301100,Laguna Beach,64,8,0,1,3,6,127,0,0,209
+11,La Habra Police Department,CA,CA0301200,La Habra,103,25,0,2,4,12,119,0,0,265
+12,Los Alamitos Police Department,CA,CA0301300,Los Alamitos,10,1,0,0,0,0,12,0,0,23
+13,Newport Beach Police Department,CA,CA0301400,Newport Beach,129,13,0,2,1,25,189,0,0,359
+14,Orange Police Department,CA,CA0301500,Orange,188,21,0,1,6,42,240,0,0,498
+15,Placentia Police Department,CA,CA0301600,Placentia,87,6,0,2,1,12,89,0,0,197
+16,San Clemente Police Department,CA,CA0301700,San Clemente,96,12,0,1,2,9,88,0,0,208
+17,San Juan Capistrano Police Department,CA,CA0301800,San Juan Capistrano,59,5,0,0,0,8,45,0,0,117
+18,Santa Ana Police Department,CA,CA0301900,Santa Ana,446,116,0,16,46,122,333,0,0,1079
+19,Seal Beach Police Department,CA,CA0302000,Seal Beach,26,2,0,1,0,6,46,0,0,81
+20,Stanton Police Department,CA,CA0302100,Stanton,63,9,0,2,2,21,46,0,0,143
+21,Tustin Police Department,CA,CA0302200,Tustin,164,19,0,2,8,37,178,0,0,408
+22,Villa Park Police Department,CA,CA0302300,Villa Park,2,0,0,0,0,0,8,0,0,10
+23,Westminster Police Department,CA,CA0302400,Westminster,176,25,1,4,3,38,188,0,0,435
+24,Yorba Linda Police Department,CA,CA0302500,Yorba Linda,22,1,0,0,0,5,29,0,0,57
+25,Irvine Police Department,CA,CA0302600,Irvine,213,16,0,2,4,30,171,0,0,436
+26,Mission Viejo Police Department,CA,CA030350X,Mission Viejo,77,5,0,1,0,6,59,0,0,148
+27,Dana Point Police Department,CA,CA030360X,Dana Point,46,8,0,0,0,10,65,0,0,129
+28,Laguna Niguel Police Department,CA,CA030390X,Laguna Niguel,56,3,0,0,1,6,60,0,0,126
+29,Laguna Hills Police Department,CA,CA030420X,Laguna Hills,41,4,0,0,0,6,33,0,0,84
+30,Lake Forest Police Department,CA,CA030430X,Lake Forest,97,7,0,1,2,6,91,0,0,204
+31,Laguna Woods Police Department,CA,CA030470X,Laguna Woods,3,0,0,0,0,1,3,0,0,7
+32,Rancho Santa Margarita Police Department,CA,CA030480X,Rancho Santa Margarita,36,2,0,0,2,3,28,0,0,71
+33,Aliso Viejo Police Department,CA,CA030490X,Aliso Viejo,44,0,1,0,1,5,34,0,0,85
+34,,,CA0300000,,183,16,1,3,16,22,160,0,0,401
+35,,,CA0302700,,3,0,0,0,1,0,12,0,0,16
+36,,,CA030290X,,1,0,0,0,0,0,0,0,0,1
+37,,,CA0303200,,3,1,0,0,0,0,7,0,0,11
+38,,,CA030340X,,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A,N/A
+39,,,CA0309600,,0,0,0,0,0,0,0,0,0,0
+40,,,CA0309700,,7,1,0,0,2,2,6,0,0,18
+41,,,CA0309900,,25,3,6,0,0,3,57,0,0,94
