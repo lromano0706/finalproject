@@ -10,10 +10,23 @@ function getData() {
   var zip = d3.select("#zip").property("value");
   console.log(beds, baths, yearBuilt, sqft, address, county, zip);
 
-  // feed data into model and save output
+  var values = [baths, beds, sqft, 8343];
+  var valString = "";
+  for (var i=0; i<values.length; i++) {
+    if (i != (values.length-1)) {
+      valString = valString + values[i] + "-";
+    }
+    else {
+      valString = valString + values[i];
+    }
+  }
+  console.log(valString)
+  console.log("http://127.0.0.1:5000/estimate/" + valString);
+  d3.json("http://127.0.0.1:5000/estimate/" + valString).then(function(a) {
+    console.log(a);
+    d3.select("#estimate").html(`$${a.toLocaleString()}`);
+  }).catch(function (a) { console.log(a); });
 
-  // output estimate to html
-  // d3.select("#estimate").html("**estimate variable**");
 };
 
 // Creating map object
