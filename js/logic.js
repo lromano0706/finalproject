@@ -1,3 +1,21 @@
+d3.select("#submit-input").on("click", getData);
+
+function getData() {
+  var beds = d3.select("#beds").property("value");
+  var baths = d3.select("#baths").property("value");
+  var yearBuilt = d3.select("#year-built").property("value");
+  var sqft = d3.select("#sqft").property("value");
+  var address = d3.select("#address").property("value");
+  var county = d3.select("#county").property("value");
+  var zip = d3.select("#zip").property("value");
+  console.log(beds, baths, yearBuilt, sqft, address, county, zip);
+
+  // feed data into model and save output
+
+  // output estimate to html
+  // d3.select("#estimate").html("**estimate variable**");
+};
+
 // Creating map object
 var myMap = L.map("myMap", {
   center: [40.7, -73.95],

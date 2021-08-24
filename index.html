@@ -70,7 +70,7 @@
                                 <br>
                                 <div class="dropdown">
                                     <h6>County:</h6>
-                                    <select id="selDataset1" onchange="optionChanged(this.value)">
+                                    <select id="county" onchange="optionChanged(this.value)">
                                         <!-- change this if we are going to enter more counties from a DF -->
                                         <option value="1">Orange County</option>
                                         <option value="2">Los Angeles County</option>
@@ -80,7 +80,7 @@
                                 <!--Drop down for zip codes-->
                                 <div class="dropdown" style="margin-top:50px;">
                                     <h6>Zip Code:</h6>
-                                    <select id="selDataset2" onchange="optionChanged(this.value)">
+                                    <select id="zip" onchange="optionChanged(this.value)">
                                         <option value="1">94568</option>
                                         <option value="2">94597</option>
                                         <option value="3">94511</option>
@@ -98,12 +98,12 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Bedrooms</label>
-                                            <input type="bedroom" class="form-control" id="exampleFormControlInput1"
+                                            <input type="bedroom" class="form-control" id="beds"
                                                 placeholder="4">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Baths</label>
-                                            <input type="bath" class="form-control" id="exampleFormControlInput1"
+                                            <input type="bath" class="form-control" id="baths"
                                                 placeholder="2.5">
                                         </div>
 
@@ -114,20 +114,20 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Year Built</label>
-                                            <input type="Year Built" class="form-control" id="exampleFormControlInput1"
+                                            <input type="Year Built" class="form-control" id="year-built"
                                                 placeholder="i.e. 2000">
                                         </div>
 
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">sq. fts</label>
-                                            <input type="sq. ft" class="form-control" id="exampleFormControlInput1"
+                                            <input type="sq. ft" class="form-control" id="sqft"
                                                 placeholder="1400">
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Address</label>
-                                        <input type="Address" class="form-control" id="exampleFormControlInput1"
+                                        <input type="Address" class="form-control" id="address"
                                             placeholder="Enter Address">
                                     </div>
 
@@ -139,8 +139,9 @@
                             <img src="assets/futurecity1.jpg" class="card-img-top" alt="futurecity1">
                             <div class="card-body">
                                 <h5 class="card-title">Our Estimates Show</h5>
+                                <h4 id="estimate"></h4>
 
-                                <a href="#chart" class="btn btn-primary ">Go History Chart</a>
+                                <a href="#chart" class="btn btn-primary" id="submit-input">Go History Chart</a>
                             </div>
                         </div>
                     </div>
