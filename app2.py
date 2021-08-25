@@ -1,7 +1,7 @@
 import numpy as np
 import csv
 from flask import Flask, jsonify
-from flask_cors import CORS
+# from flask_cors import CORS
 
 ######################################################
 #  Flask Setup & Routes
@@ -9,7 +9,7 @@ from flask_cors import CORS
 
 # Enable CORS
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 
 @app.route("/")
@@ -29,4 +29,4 @@ def crime():
 
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(host='127.0.0.1', port=8080, debug=True)
