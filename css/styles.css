@@ -63,6 +63,10 @@
   --bs-body-bg: #fff;
 }
 
+.leaflet-control-layers-base {  
+  text-align: left; 
+}
+
 *,
 *::before,
 *::after {
@@ -11292,3 +11296,4 @@ section {
   height: 400px;
   width: 400px
 }
+
