@@ -1,18 +1,23 @@
 from flask import Flask, render_template, request, jsonify
-from bson import ObjectId
+import numpy as np
+import csv
+from flask_cors import COR
 from mlmodel import model
 
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route("/")
 def index():   
-
-    # render an index.html template and pass it the data you retrieved from the database
     return render_template("index.html")
 
-
+@app.route("/api/v1.0/crime")
+def crime():
+    with open("./Data/crime_cities_coords.csv", "r") as f:
+        reader = csv.DictReader(f)
+        crime_list = list(reader)
+        return jsonify(crime_list)
 
 @app.route("/estimate/<valString>")
 def estimate(valString):

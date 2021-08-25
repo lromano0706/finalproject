@@ -31,7 +31,7 @@ function getData() {
 
 // Creating map object
 var myMap = L.map("myMap", {
-  center: [40.7, -73.95],
+  center: [33.7175, -117.8311],
   zoom: 11
 });
 
