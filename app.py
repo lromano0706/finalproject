@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import numpy as np
 import csv
-from flask_cors import COR
+from flask_cors import CORS
 from mlmodel import model
 
 
