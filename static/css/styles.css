@@ -63,6 +63,10 @@
   --bs-body-bg: #fff;
 }
 
+.leaflet-control-layers-base {  
+  text-align: left; 
+}
+
 *,
 *::before,
 *::after {
@@ -11289,6 +11293,7 @@ section {
 }
 
 #myMap {
-  height: 400px;
-  width: 400px
+  height: 100%;
+  width: 100%;
 }
+

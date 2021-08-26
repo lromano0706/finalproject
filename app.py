@@ -1,32 +1,32 @@
+from flask import Flask, render_template, request, jsonify
 import numpy as np
 import csv
-from flask import Flask, jsonify
-from flask_cors import CORS
+# from flask_cors import CORS
+from mlmodel import model
 
-######################################################
-#  Flask Setup & Routes
-######################################################
 
-# Enable CORS
 app = Flask(__name__)
-CORS(app)
-
+# CORS(app)
 
 @app.route("/")
-def welcome():
-    return (
-        f"/api/v1.0/crime <br/>"
-    )
+def index():   
+    return render_template("index.html")
 
-# function will jsonify medal_list and we will use API in JS for mapping
 @app.route("/api/v1.0/crime")
 def crime():
-    with open("./Data/crime_cities_coords.csv", "r") as f:
+    with open("../finalproject/Data/crime_cities_coords.csv", "r") as f:
+
         reader = csv.DictReader(f)
         crime_list = list(reader)
         return jsonify(crime_list)
 
+@app.route("/estimate/<valString>")
+def estimate(valString):
+    values = valString.split('-')
+    return jsonify(round(model(values)[0],0))
 
 
-if __name__ == '__main__':
-    app.run(debug = True)
+if __name__ == "__main__":
+    app.run(debug=True)
+
+

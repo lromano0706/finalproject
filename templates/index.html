@@ -9,7 +9,7 @@
     <title>Optimus Real Estate</title>
     <link rel="icon" type="image/x-icon" href="assets/transformers_autobots.png" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+    <link href="../static/css/styles.css" rel="stylesheet" />
     <!-- Leaflet CSS -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
         integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
@@ -44,7 +44,7 @@
     </nav>
     <!-- Header-->
     <header class="bg-primary bg-gradient text-white">
-        <img src="assets/transformers_autobots2.png" alt="Autobots2 Pic" class="rounded mx-auto d-block">
+        <img src="../static/assets/transformers_autobots2.png" alt="Autobots2 Pic" class="rounded mx-auto d-block">
         <div class="container px-4 text-center">
             <h1 class="fw-bolder">Welcome to Optimus Real Estate</h1>
 
@@ -64,13 +64,13 @@
                         <div class="card
                         
                         ">
-                            <img src="assets/futurecity2.jpg" class="card-img-top" alt="futurecity2">
+                            <img src="../static/assets/futurecity2.jpg" class="card-img-top" alt="futurecity2">
                             <div class="card-body">
                                 <h5 class="card-title">Pick County and Zip</h5>
                                 <br>
                                 <div class="dropdown">
                                     <h6>County:</h6>
-                                    <select id="selDataset1" onchange="optionChanged(this.value)">
+                                    <select id="county" onchange="optionChanged(this.value)">
                                         <!-- change this if we are going to enter more counties from a DF -->
                                         <option value="1">Orange County</option>
                                         <option value="2">Los Angeles County</option>
@@ -80,7 +80,7 @@
                                 <!--Drop down for zip codes-->
                                 <div class="dropdown" style="margin-top:50px;">
                                     <h6>Zip Code:</h6>
-                                    <select id="selDataset2" onchange="optionChanged(this.value)">
+                                    <select id="zip" onchange="optionChanged(this.value)">
                                         <option value="1">94568</option>
                                         <option value="2">94597</option>
                                         <option value="3">94511</option>
@@ -91,20 +91,18 @@
                         </div>
                         <!-- Second Card Form Input-->
                         <div class="card">
-                            <img src="assets/futurecity3.jpg" class="card-img-top" alt="futurecity3">
+                            <img src="../static/assets/futurecity3.jpg" class="card-img-top" alt="futurecity3">
                             <div class="card-body">
                                 <h5 class="card-title">Input Home Information</h5>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Bedrooms</label>
-                                            <input type="bedroom" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="4">
+                                            <input type="bedroom" class="form-control" id="beds" placeholder="4">
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Baths</label>
-                                            <input type="bath" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="2.5">
+                                            <input type="bath" class="form-control" id="baths" placeholder="2.5">
                                         </div>
 
 
@@ -114,20 +112,19 @@
                                     <div class="col-sm-6">
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">Year Built</label>
-                                            <input type="Year Built" class="form-control" id="exampleFormControlInput1"
+                                            <input type="Year Built" class="form-control" id="year-built"
                                                 placeholder="i.e. 2000">
                                         </div>
 
 
                                         <div class="mb-3">
                                             <label for="exampleFormControlInput1" class="form-label">sq. fts</label>
-                                            <input type="sq. ft" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="1400">
+                                            <input type="sq. ft" class="form-control" id="sqft" placeholder="1400">
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1" class="form-label">Address</label>
-                                        <input type="Address" class="form-control" id="exampleFormControlInput1"
+                                        <input type="Address" class="form-control" id="address"
                                             placeholder="Enter Address">
                                     </div>
 
@@ -136,11 +133,12 @@
                         </div>
                         <!-- Third Card Form Output-->
                         <div class="card">
-                            <img src="assets/futurecity1.jpg" class="card-img-top" alt="futurecity1">
+                            <img src="../static/assets/futurecity1.jpg" class="card-img-top" alt="futurecity1">
                             <div class="card-body">
                                 <h5 class="card-title">Our Estimates Show</h5>
+                                <h4 id="estimate"></h4>
 
-                                <a href="#chart" class="btn btn-primary ">Go History Chart</a>
+                                <a href="#chart" class="btn btn-primary" id="submit-input">Go History Chart</a>
                             </div>
                         </div>
                     </div>
@@ -164,39 +162,42 @@
             </div>
         </div>
     </section>
+
     <!-- Contact section-->
     <section id="mapData">
-
-
         <div class="container px-4 text-center">
             <div class="row gx-4 justify-content-center">
                 <div class="col-lg-10">
                     <h2> Map Data</h2>
                     <!-- Input Card Groups-->
                     <div class="card-group">
-                        <div id="myMap"></div>
-                        <div class="card">
-                            <div class="card h-50">
-                                <div class="card-body">
-                                    <h5 class="card-title">Gauge 1</h5>
-                                    <img src="assets/gauge.png" height="120px" alt="Picture of Gauge" >
+                        <div class="col-sm-8">
+                            <div id="myMap"></div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="card">
+                                <div class="card ">
+                                    <div class="card-body ">
+                                        <div class="row justify-content-center">
+                                            <!-- where gauge1 is inserted -->
+                                            <div id="gauge1"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <!-- where gauge1 is inserted -->
+                                            <div id="gauge2"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card h-50">
-                                <div class="card-body">
-                                    <h5 class="card-title">Gauge 2</h5>
-                                    <img src="assets/gauge.png" height="120px"  alt="Picture of Gauge">
-                                </div>
-                            </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
-
     </section>
-
 
 
     <!-- Footer-->
@@ -206,10 +207,13 @@
                 Martinez, Joaquin Alvardo</p>
         </div>
     </footer>
+    <!--Ploty-->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <!-- Config JS-->
-    <script src="js/config.js"></script>
+    <script src="../static/js/config.js"></script>
     <!--D3 cdn-->
     <script src="https://d3js.org/d3.v7.min.js"></script>
+
     <!-- Leaflet JS -->
     <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
         integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
@@ -221,10 +225,14 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Core theme JS: These are incase we dont want to use the circles-->
+    <script src="../static/js/scripts.js"></script>
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/logic.js"></script>
+    <script src="../static/js/logic.js"></script>
+    <!-- <script src="js/logic.js"></script> -->
+
+    <!-- Map JavaScript -->
+    <script type="text/javascript" src="../static/js/circle_maps.js"></script>
 </body>
 
 </html>
