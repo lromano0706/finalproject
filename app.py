@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request, jsonify
 import numpy as np
 import csv
-from flask_cors import CORS
+# from flask_cors import CORS
 from mlmodel import model
 
 
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 
 @app.route("/")
 def index():   
@@ -14,7 +14,7 @@ def index():
 
 @app.route("/api/v1.0/crime")
 def crime():
-    with open("./Data/crime_cities_coords.csv", "r") as f:
+    with open("../finalproject/Data/crime_cities_coords.csv", "r") as f:
         reader = csv.DictReader(f)
         crime_list = list(reader)
         return jsonify(crime_list)

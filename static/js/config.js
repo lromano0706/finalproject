@@ -1,7 +1,7 @@
-// API key
+//API key
 const API_KEY = "pk.eyJ1IjoibHJvbWFubzA3MDYiLCJhIjoiY2tyNGJncDQ0MnU2azJ2cWh1cGl4dG9rdCJ9.v9IbcbVWKDuOrVYAKXfsxQ";
 
-// setup for chart
+// setup for line chart
 const labels = ["January","February","March","April","May", "June", "July", "August", "September"," December"];
 const data = {
   labels: labels,
@@ -54,4 +54,106 @@ const data = {
     }
   ]
 };
-// end setup
+// end line chart  setup
+
+
+// gauge1 set up
+
+var data1 = [
+  {
+    domain: { x: [0, 1], y: [0, 1] },
+    type: 'indicator',
+    mode: 'gauge',
+    value: 2,
+    title: {
+      text: 'School Review',
+    },
+    gauge: {
+      axis: { range: [null, 10], tickwidth: 1, tickcolor: 'darkgrey', nticks: 11 },
+      bar: { color: 'darkgrey', thickness: 0.3 },
+      bgcolor: 'white',
+      borderwidth: 01,
+      bordercolor: 'black',
+      axes: [{
+        pointers: [{
+          type: 'Marker',
+          markerType: 'Circle'
+        }]
+      }],
+      steps: [
+        { range: [0, 1], color: 'rgba(255, 99, 132, 0.7)' },
+        { range: [1, 2], color: 'rgba(255, 159, 64, 0.7)' },
+        { range: [2, 3], color: 'rgba(255, 206, 86, 0.7)' },
+        { range: [3, 4], color: 'rgba(54, 162, 235, 0.7)' },
+        { range: [4, 5], color: 'rgba(75, 192, 192, 0.7)' },
+        { range: [5, 6], color: 'rgba(255, 99, 132, 0.7)' },
+        { range: [6, 7], color: 'rgba(255, 159, 64, 0.7)' },
+        { range: [7, 8], color: 'rgba(255, 206, 86, 0.7)' },
+        { range: [8, 9], color: 'rgba(54, 162, 235, 0.7)' },
+        { range: [9, 10], color: 'rgba(75, 192, 192, 0.7)' },
+      ],
+      threshold: {
+        line: { color: "red", width: 4 },
+        thickness: 0.75,
+        value: 4
+      }
+    },
+  },
+];
+
+var data2 = [
+  {
+    domain: { x: [0, 1], y: [0, 1] },
+    type: 'indicator',
+    mode: 'gauge',
+    value: 3,
+    title: {
+      text: 'Crime Review',
+    },
+    gauge: {
+      axis: { range: [null, 5], tickwidth: 1, tickcolor: 'darkgrey', nticks: 6 },
+      bar: { color: 'darkgrey', thickness: 0.3 },
+      bgcolor: 'white',
+      borderwidth: 01,
+      bordercolor: 'black',
+      axes: [{
+        pointers: [{
+          type: 'Marker',
+          markerType: 'Circle'
+        }]
+      }],
+      steps: [
+        { range: [0, 1], color: 'rgba(255, 99, 132, 0.7)' },
+        { range: [1, 2], color: 'rgba(255, 159, 64, 0.7)' },
+        { range: [2, 3], color: 'rgba(255, 206, 86, 0.7)' },
+        { range: [3, 4], color: 'rgba(54, 162, 235, 0.7)' },
+        { range: [4, 5], color: 'rgba(75, 192, 192, 0.7)' },
+        { range: [5, 6], color: 'rgba(255, 99, 132, 0.7)' },
+        { range: [6, 7], color: 'rgba(255, 159, 64, 0.7)' },
+        { range: [7, 8], color: 'rgba(255, 206, 86, 0.7)' },
+        { range: [8, 9], color: 'rgba(54, 162, 235, 0.7)' },
+        { range: [9, 10], color: 'rgba(75, 192, 192, 0.7)' },
+      ],
+      threshold: {
+        line: { color: "red", width: 4 },
+        thickness: 0.75,
+        value: 1
+      }
+    },
+  },
+];
+
+
+
+
+// Layout 
+var layout = {
+
+  width: 316,
+  height: 180,
+  margin: { t: 45, r: 25, l: 25, b: 5 },
+  font: { color: 'black', family: 'Arial' }
+};
+
+
+// end gauge information
