@@ -15,6 +15,7 @@ def index():
 @app.route("/api/v1.0/crime")
 def crime():
     with open("../finalproject/Data/crime_cities_coords.csv", "r") as f:
+
         reader = csv.DictReader(f)
         crime_list = list(reader)
         return jsonify(crime_list)
@@ -27,4 +28,5 @@ def estimate(valString):
 
 if __name__ == "__main__":
     app.run(debug=True)
+
 
