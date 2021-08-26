@@ -1,7 +1,7 @@
 import numpy as np
 import csv
 from flask import Flask, jsonify
-# from flask_cors import CORS
+from flask_cors import CORS
 
 ######################################################
 #  Flask Setup & Routes
@@ -9,14 +9,14 @@ from flask import Flask, jsonify
 
 # Enable CORS
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 
 
 @app.route("/")
 def welcome():
     return (
         f"/api/v1.0/crime <br/>"
-        f"/api/v1.0/height_avg"
+        
     )
 
 # function will jsonify medal_list and we will use API in JS for mapping
@@ -29,4 +29,4 @@ def crime():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8080, debug=True)
+    app.run(debug=True)
