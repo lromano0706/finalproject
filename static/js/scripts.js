@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     // data variable is sitting in config.js
     data: data,
     options: {

@@ -2,10 +2,10 @@ from flask import Flask, render_template, request, jsonify
 import numpy as np
 import csv
 # from flask_cors import CORS
-from mlmodel import model
+from mlmodel import mlmodel
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 # CORS(app)
 
 @app.route("/")
@@ -22,8 +22,8 @@ def crime():
 
 @app.route("/estimate/<valString>")
 def estimate(valString):
-    values = valString.split('-')
-    return jsonify(round(model(values)[0],0))
+    values = valString.split('+')
+    return jsonify(round(mlmodel(values)[0],0))
 
 
 if __name__ == "__main__":
