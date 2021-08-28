@@ -1,5 +1,5 @@
 // Use local flask API to get Medal and country data
-var local_flask = "http://127.0.0.1:5000/api/v1.0/crime";
+var local_flask = "http://127.0.0.1:5000/crimes";
 
 
 
@@ -36,16 +36,16 @@ d3.json(local_flask).then(function(response) {
 
     // push all crimes into arrays
     for (var i = 0; i < response.length; i++) {
-        if (response[i].Agg_Assult > 0 ) {
+        if (response[i].agg_assault > 0 ) {
             aggAssul.push(
             L.circle([response[i].Latitude, response[i].Longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
-              radius: circleSize(response[i].Agg_Assult)
+              radius: circleSize(response[i].agg_assault)
 
             })
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Aggravated Assault Cases: " + response[i].Agg_Assult + "</p>")
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Aggravated Assault Cases: " + response[i].agg_assault+ "</p>")
             );
         } 
           if (response[i].Sex_Offences > 0 ) {

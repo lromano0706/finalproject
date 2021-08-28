@@ -1,6 +1,5 @@
 //API key
 const API_KEY = "pk.eyJ1IjoibHJvbWFubzA3MDYiLCJhIjoiY2tyNGJncDQ0MnU2azJ2cWh1cGl4dG9rdCJ9.v9IbcbVWKDuOrVYAKXfsxQ";
-
 // setup for line chart
 const labels = ["January","February","March","April","May", "June", "July", "August", "September"," December"];
 const data = {

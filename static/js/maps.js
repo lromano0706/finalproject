@@ -1,5 +1,5 @@
 // Use local flask API to get Medal and country data
-var local_flask = "http://127.0.0.1:5000/api/v1.0/crime";
+var local_flask = "http://127.0.0.1:5000/crimes";
 
 
 // Call/Response json data from local API

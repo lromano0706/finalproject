@@ -80,3 +80,5 @@ function getData() {
 Plotly.newPlot('gauge1', data1, layout)
 // rendering gauge2 on html
 Plotly.newPlot('gauge2', data2, layout)
+
+
