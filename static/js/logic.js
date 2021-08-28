@@ -91,7 +91,7 @@ function circleSize (numOfCrimes) {
 
 var totalCrime = 0;
 var avgCrime = []; 
-
+var test = []
 
 // Call/Response json data from local API
 d3.json(local_flask).then(function(response) {
@@ -218,11 +218,13 @@ d3.json(local_flask).then(function(response) {
     
     for (var i = 0; i < totalOffences.length; i++) {
       totalCrime += totalOffences[i];
+      console.log(totalCrime);
     }
      
-    avgCrime.push(totalCrime/totalOffences.length);
-
-
+    avgCrime = totalCrime/totalOffences.length;
+    console.log(avgCrime);
+    test.push(avgCrime)
+    console.log(parseFloat(test))
 
     // Add all the cityMarkers to a new layer group.
     var aggravatedAss = L.layerGroup(aggAssul);
@@ -271,10 +273,11 @@ d3.json(local_flask).then(function(response) {
   // Pass our map layers into our layer control
   // Add the layer control to the map
   L.control.layers(baseMaps, overlayMaps).addTo(myMap);
-  return avgCrime;
+
   });
 console.log(avgCrime.length);
-console.log(avgCrime[0]);
+console.log(avgCrime);
+console.log(test)
 
 // setup for line chart
 const labels = ["January","February","March","April","May", "June", "July", "August", "September"," December"];
@@ -381,12 +384,12 @@ var data2 = [
     domain: { x: [0, 1], y: [0, 1] },
     type: 'indicator',
     mode: 'gauge',
-    value: 3,
+    value: 229 ,
     title: {
       text: 'Crime Review',
     },
     gauge: {
-      axis: { range: [null, 1000], tickwidth: 1, tickcolor: 'darkgrey', nticks: 6 },
+      axis: { range: [null, 10], tickwidth: 1, tickcolor: 'darkgrey', nticks: 6 },
       bar: { color: 'darkgrey', thickness: 0.3 },
       bgcolor: 'white',
       borderwidth: 01,
@@ -398,21 +401,21 @@ var data2 = [
         }]
       }],
       steps: [
-        { range: [0, 100], color: 'rgba(255, 99, 132, 0.7)' },
-        { range: [100, 200], color: 'rgba(255, 159, 64, 0.7)' },
-        { range: [200, 300], color: 'rgba(255, 206, 86, 0.7)' },
-        { range: [300, 400], color: 'rgba(54, 162, 235, 0.7)' },
-        { range: [400, 500], color: 'rgba(75, 192, 192, 0.7)' },
-        { range: [500, 600], color: 'rgba(255, 99, 132, 0.7)' },
-        { range: [600, 700], color: 'rgba(255, 159, 64, 0.7)' },
-        { range: [700, 800], color: 'rgba(255, 206, 86, 0.7)' },
-        { range: [800, 900], color: 'rgba(54, 162, 235, 0.7)' },
-        { range: [900, 1000], color: 'rgba(75, 192, 192, 0.7)' },
+        { range: [0, 1], color: 'rgba(255, 99, 132, 0.7)' },
+        { range: [1, 2], color: 'rgba(255, 159, 64, 0.7)' },
+        { range: [2,3], color: 'rgba(255, 206, 86, 0.7)' },
+        { range: [3, 4], color: 'rgba(54, 162, 235, 0.7)' },
+        { range: [4, 5], color: 'rgba(75, 192, 192, 0.7)' },
+        { range: [5, 6], color: 'rgba(255, 99, 132, 0.7)' },
+        { range: [6, 7], color: 'rgba(255, 159, 64, 0.7)' },
+        { range: [7, 8], color: 'rgba(255, 206, 86, 0.7)' },
+        { range: [8, 9], color: 'rgba(54, 162, 235, 0.7)' },
+        { range: [9, 10], color: 'rgba(75, 192, 192, 0.7)' },
       ],
       threshold: {
         line: { color: "red", width: 4 },
         thickness: 0.75,
-        value: 1
+        value: 6
       }
     },
   },
