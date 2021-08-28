@@ -9,6 +9,9 @@ function circleSize (numOfCirmes) {
   return numOfCirmes * 10;
 }
 
+var totalCrime = 0;
+var avgCrime = 0; 
+
 
 // Call/Response json data from local API
 d3.json(local_flask).then(function(response) {
@@ -24,6 +27,8 @@ d3.json(local_flask).then(function(response) {
     var robbery = [];
     var simpAssult = [];
     var offencesTotal = [];
+    var totalOffences = [];
+
 
     var redIcon = new L.Icon({
       iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
@@ -38,7 +43,7 @@ d3.json(local_flask).then(function(response) {
     for (var i = 0; i < response.length; i++) {
         if (response[i].agg_assault > 0 ) {
             aggAssul.push(
-            L.circle([response[i].Latitude, response[i].Longitude], {
+            L.circle([response[i].latitude, response[i].longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
@@ -48,87 +53,97 @@ d3.json(local_flask).then(function(response) {
             .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Aggravated Assault Cases: " + response[i].agg_assault+ "</p>")
             );
         } 
-          if (response[i].Sex_Offences > 0 ) {
+          if (response[i].sex_offenses > 0 ) {
             sexOffen.push(
-            L.circle([response[i].Latitude, response[i].Longitude], {
+            L.circle([response[i].latitude, response[i].longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
-              radius: circleSize(response[i].Sex_Offences)
+              radius: circleSize(response[i].sex_offenses)
 
             })
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Sex Offences Cases: " + response[i].Sex_Offences + "</p>")
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Sex Offences Cases: " + response[i].sex_offenses + "</p>")
             );
           } 
-          if (response[i].Manslaughter_Neg > 0 ) {
+          if (response[i].manslaughter_neg > 0 ) {
             manslaughterNeg.push(
-            L.circle([response[i].Latitude, response[i].Longitude], {
+            L.circle([response[i].latitude, response[i].longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
-              radius: circleSize(response[i].Manslaughter_Neg)
+              radius: circleSize(response[i].manslaughter_neg)
 
             })
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Man Slaughter Cases: " + response[i].Manslaughter_Neg + "</p>")
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Man Slaughter Cases: " + response[i].manslaughter_neg + "</p>")
             );
           } 
-          if (response[i].Murder_and_Nonneg_Man > 0 ) {
+          if (response[i].murder_and_nonneg_man > 0 ) {
             murder.push(
-            L.circle([response[i].Latitude, response[i].Longitude], {
+            L.circle([response[i].latitude, response[i].longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
-              radius: circleSize(response[i].Murder_and_Nonneg_Man)
+              radius: circleSize(response[i].murder_and_nonneg_man)
 
             })
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Murder Cases: " + response[i].Murder_and_Nonneg_Man + "</p>")
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Murder Cases: " + response[i].murder_and_nonneg_man + "</p>")
             );
         } 
-          if (response[i].Rape > 0 ) {
+          if (response[i].rape > 0 ) {
             rape.push(
-            L.circle([response[i].Latitude, response[i].Longitude], {
+            L.circle([response[i].latitude, response[i].longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
-              radius: circleSize(response[i].Rape)
+              radius: circleSize(response[i].rape)
 
             })
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Rape Cases: " + response[i].Rape + "</p>")
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Rape Cases: " + response[i].rape + "</p>")
             );
           } 
-          if (response[i].Robbery > 0 ) {
+          if (response[i].robbery > 0 ) {
             robbery.push(
-            L.circle([response[i].Latitude, response[i].Longitude], {
+            L.circle([response[i].latitude, response[i].longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
-              radius: circleSize(response[i].Robbery)
+              radius: circleSize(response[i].robbery)
 
             })
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Robbery Cases: " + response[i].Robbery + "</p>")
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Robbery Cases: " + response[i].robbery + "</p>")
             );
           } 
-          if (response[i].Simp_Assult > 0 ) {
+          if (response[i].simp_assault > 0 ) {
             simpAssult.push(
-            L.circle([response[i].Latitude, response[i].Longitude], {
+            L.circle([response[i].latitude, response[i].longitude], {
               color: 'red', 
               fillColor: '#f03',
               fillOpacity: 0.5,
-              radius: circleSize(response[i].Simp_Assult)
+              radius: circleSize(response[i].simp_assault)
 
             })
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Assult Cases: " + response[i].Simp_Assult + "</p>")
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Assult Cases: " + response[i].simp_assault + "</p>")
             );
           } 
           // Finally total crimes
-          if (response[i].Offences_Total > 0 ) {
+          if (response[i].offenses_total > 0 ) {
             offencesTotal.push(
-            L.marker([response[i].Latitude, response[i].Longitude], {icon: redIcon})
-            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Crimes: " + response[i].Offences_Total + "</p>")
+            L.marker([response[i].latitude, response[i].longitude], {icon: redIcon})
+            .bindPopup("<h3>" + response[i].City + "</h3> <hr> <p>Total Crimes: " + response[i].offenses_total + "</p>")
             );
           }
-    
+          totalOffences.push(response[i].offenses_total);
+ 
     }
+    
+    for (var i = 0; i < totalOffences.length; i++) {
+      totalCrime += totalOffences[i];
+    }
+     
+    avgCrime = totalCrime/totalOffences.length;
+
+
+
     // Add all the cityMarkers to a new layer group.
     var aggravatedAss = L.layerGroup(aggAssul);
     var sexOffence = L.layerGroup(sexOffen);
