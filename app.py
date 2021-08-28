@@ -7,7 +7,7 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
 import csv
-# from mlmodel import mlmodel
+from mlmodel import mlmodel
 
 engine = create_engine("postgresql://root:postgres@mypostgresdb.c57smewha8wr.us-west-1.rds.amazonaws.com:5432/finalproject")
 conn = engine.connect()
