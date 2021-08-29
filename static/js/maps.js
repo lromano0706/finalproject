@@ -120,7 +120,3 @@ d3.json(local_flask).then(function(response) {
   L.control.layers(baseMaps, overlayMaps).addTo(myMap);
  
   });
-// rendering gauge1 on html
-Plotly.newPlot('gauge1', data1, layout)
-// rendering gauge2 on html
-Plotly.newPlot('gauge2', data2, layout)
