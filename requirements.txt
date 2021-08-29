@@ -52,7 +52,7 @@ seaborn==0.11.1
 setuptools-git==1.2
 sklearn==0.0
 
-tensorboard-data-server==0.6.1
+
 tensorboard-plugin-wit==1.6.0
 tensorflow==2.5.0
 termcolor==1.1.0
