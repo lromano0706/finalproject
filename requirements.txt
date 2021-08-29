@@ -14,7 +14,7 @@ mkl-service==2.4.0
 protobuf==3.17.2
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-pyreadline==2.1
+
 
 
 
