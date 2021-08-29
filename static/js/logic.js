@@ -23,56 +23,66 @@ var schoolRatings = ['2.333', '2.667', '3.0', '3.333', '3.667', '4.0', '4.333', 
   '7.667', '7.75', '8.0', '8.2', '8.25', '8.333', '8.5', '8.667', '8.75', '9.0', '9.333'];
 
 function getData() {
-  var beds = d3.select("#beds").property("value");
-  var baths = d3.select("#baths").property("value");
-  var yearBuilt = d3.select("#year-built").property("value");
-  var sqft = d3.select("#sqft").property("value");
-  var zip = d3.select("#zip").property("value");
-  var city = d3.select("#city").property("value");
-  var schoolRating = d3.select("#school-rating").property("value");
-  var lotSize = d3.select("#lot-size").property("value");
-  var daysOnMarket = d3.select("#days-on-market").property("value");
-  var lat = d3.select("#lat").property("value");
-  var lng = d3.select("#lng").property("value");
-
-  var values = [4, 2.5, 1400, 2000, 2000, 10, 33.7175, -117.8311, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  var numInputs = [beds, baths, sqft, lotSize, yearBuilt, daysOnMarket, lat, lng];
-
-  for (var i = 0; i < numInputs.length; i++) {
-    if (numInputs[i] != "") {
-      values[i] = numInputs[i];
-    }
-  }
-
-  // values[8] = crime; <-- grab from database via city
-  values[cities.indexOf(city) + 9] = 1;
-  values[zips.indexOf(zip) + 42] = 1;
-  values[schoolRatings.indexOf(schoolRating) + 118] = 1;
-
-  console.log(values);
-
-  var valString = "";
-  for (var i = 0; i < values.length; i++) {
-    if (i != (values.length - 1)) {
-      valString = valString + values[i] + "+";
-    }
-    else {
-      valString = valString + values[i];
-    }
-  }
-  console.log(valString)
-  console.log("http://127.0.0.1:5000/estimate/" + valString);
-  d3.json("http://127.0.0.1:5000/estimate/" + valString).then(function (a) {
-    console.log(a);
-    d3.select("#estimate").html(`$${a.toLocaleString()}`);
-  }).catch(function (a) { console.log(a); });
-
+  d3.json(local_flask2).then(function(response) {
+      var beds = d3.select("#beds").property("value");
+      var baths = d3.select("#baths").property("value");
+      var yearBuilt = d3.select("#year-built").property("value");
+      var sqft = d3.select("#sqft").property("value");
+      var zip = d3.select("#zip").property("value");
+      var city = d3.select("#city").property("value");
+      var schoolRating = d3.select("#school-rating").property("value");
+      var lotSize = d3.select("#lot-size").property("value");
+      var daysOnMarket = d3.select("#days-on-market").property("value");
+      var lat = d3.select("#lat").property("value");
+      var lng = d3.select("#lng").property("value");
+      
+      var crime = 0;
+      for (var i=0; i<response.length; i++) {
+        if (response[i].city == city) {
+          crime = response[i].crime_per_capita_1000s;
+          break;
+        }
+      }
+  
+      var values = [4, 2.5, 1400, 2000, 2000, 10, 33.7175, -117.8311, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+      var numInputs = [beds, baths, sqft, lotSize, yearBuilt, daysOnMarket, lat, lng];
+    
+      for (var i = 0; i < numInputs.length; i++) {
+        if (numInputs[i] != "") {
+          values[i] = numInputs[i];
+        }
+      }
+    
+      values[8] = crime;
+      values[cities.indexOf(city) + 9] = 1;
+      values[zips.indexOf(zip) + 42] = 1;
+      values[schoolRatings.indexOf(schoolRating) + 118] = 1;
+    
+      console.log(values);
+    
+      var valString = "";
+      for (var i = 0; i < values.length; i++) {
+        if (i != (values.length - 1)) {
+          valString = valString + values[i] + "+";
+        }
+        else {
+          valString = valString + values[i];
+        }
+      }
+      console.log(valString)
+      console.log("http://127.0.0.1:5000/estimate/" + valString);
+      d3.json("http://127.0.0.1:5000/estimate/" + valString).then(function (a) {
+        console.log(a);
+        d3.select("#estimate").html(`$${a.toLocaleString()}`);
+      }).catch(function (a) { console.log(a); });
+    
+  })
 };
 
 
