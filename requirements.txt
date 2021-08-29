@@ -41,7 +41,7 @@ pyreadline==2.1
 python-dateutil==2.8.2
 
 
-pywin32==228
+
 PyYAML==5.4.1
 Quandl==3.6.1
 requests-oauthlib==1.3.0
