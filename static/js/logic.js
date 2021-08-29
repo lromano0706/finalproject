@@ -498,26 +498,52 @@ function getGauge(totalCrime) {
 
 getGauge();
 
-var tabledata = [
-  {id:1, name:"Oli Bob", age:"12", col:"red", dob:""},
-  {id:2, name:"Mary May", age:"1", col:"blue", dob:"14/05/1982"},
-  {id:3, name:"Christine Lobowski", age:"42", col:"green", dob:"22/05/1982"},
-  {id:4, name:"Brendon Philips", age:"125", col:"orange", dob:"01/08/1980"},
-  {id:5, name:"Margret Marmajuke", age:"16", col:"yellow", dob:"31/01/1999"},
-];
 
-//create Tabulator on DOM element with id "example-table"
-var table = new Tabulator("#example-table", {
-  height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
-  data:tabledata, //assign data to table
-  layout:"fitColumns", //fit columns to width of table (optional)
-  columns:[ //Define Table Columns
-    {title:"Name", field:"name", width:150},
-    {title:"Age", field:"age", hozAlign:"left", formatter:"progress"},
-    {title:"Favourite Color", field:"col"},
-    {title:"Date Of Birth", field:"dob", sorter:"date", hozAlign:"center"},
-  ],
-  rowClick:function(e, row){ //trigger an alert message when the row is clicked
-    alert("Row " + row.getData().id + " Clicked!!!!");
-  },
+
+d3.json(local_flask2).then(function(response) {
+  //Generate print icon
+var printIcon = function(cell, formatterParams){ //plain text value
+  return "<i class='fa fa-print'></i>";
+};
+  var table = new Tabulator("#example-table", {
+    height:205, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+    data:response, //assign data to table
+    layout:"fitData", //fit columns to width of table (optional)
+    
+    columns:[ //Define Table Columns
+
+
+      {title:"Market Days", field:"days_on_market", sorter:"number", },
+      {title:"Price", field:"price", formatter: "money",  widthGrow:2},
+      {title:"Address", field:"address", widthGrow:2},
+      {title:"City", field:"city", widthGrow:2},
+      {title:"Square Feet", field:"square_feet", widthGrow:2},
+      {title:"Baths", field:"baths", widthGrow:2},
+      {title:"Beds", field:"beds", widthGrow:2},
+      {title:"Lot size", field:"lot_size", widthGrow:2},
+      {title:"$ Per Sq. Ft.", field:"price_per_square_feet", widthGrow:2},
+
+      {title:"School Rating", field:"average_school_rating", formatter:"star", hozAlign:"center", widthGrow:2},
+
+
+      {title:"Year Built", field:"year_built", formatter:"date", widthGrow:2},
+      {title:"Crime Per Capita 1000s", field:"crime_per_capita_1000s", formatter:'progress', formatterParams:{color:["#00dd00", "orange", "rgb(255,0,0)"]}, sorter:"number", width:90},
+
+      {title:"Latitude", field:"latitude", widthGrow:2},
+      {title:"Longitude", field:"longitude", widthGrow:2},
+
+      {title:"MLS", field:"mls", widthGrow:2},
+
+
+      {title:"Redfin Url", field:"redfin_url", formatter: "link", widthGrow:2},
+
+      {title:"State", field:"state_or_province",widthGrow:2},
+
+      {title:"Zip Code", field:"zip_code", widthGrow:2}
+    ],
+    rowClick:function(e, row){ //trigger an alert message when the row is clicked
+      alert("Row " + row.getData().id + " Clicked!!!!");
+    },
 });
+});
+

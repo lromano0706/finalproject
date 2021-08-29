@@ -35,12 +35,12 @@ def estimate(valString):
 
 @app.route("/houses")
 def houses():
-    data = json.loads(pd.read_sql("SELECT * FROM clean_real_estate", conn).to_json(orient="records"))
+    data = json.loads(pd.read_sql("SELECT * FROM clean_real_estate WHERE price is not null ", conn).to_json(orient="records"))
     return jsonify(data)
 
 @app.route("/schools")
 def schools():
-    data = json.loads(pd.read_sql("SELECT * FROM school_data", conn).to_json(orient="records"))
+    data = json.loads(pd.read_sql("SELECT * FROM school_data ", conn).to_json(orient="records"))
     return jsonify(data)
 
 @app.route("/crimes")
