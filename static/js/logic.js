@@ -1,3 +1,7 @@
+// Use local flask API to get Medal and country data
+var local_flask = "https://optimus-realty.herokuapp.com//crimes";
+var local_flask2 = "https://optimus-realty.herokuapp.com//houses";
+
 d3.select("#submit-input").on("click", getData);
 
 var cities = ['Aliso Viejo', 'Anaheim', 'Brea', 'Buena Park', 'Costa Mesa',
@@ -76,22 +80,14 @@ function getData() {
         }
       }
       console.log(valString)
-      console.log("http://127.0.0.1:5000/estimate/" + valString);
-      d3.json("http://127.0.0.1:5000/estimate/" + valString).then(function (a) {
+      console.log("https://optimus-realty.herokuapp.com//estimate/" + valString);
+      d3.json("https://optimus-realty.herokuapp.com//estimate/" + valString).then(function (a) {
         console.log(a);
         d3.select("#estimate").html(`$${a.toLocaleString()}`);
       }).catch(function (a) { console.log(a); });
     
   })
 };
-
-
-
-
-// Use local flask API to get Medal and country data
-var local_flask = "http://127.0.0.1:5000/crimes";
-var local_flask2 = "http://127.0.0.1:5000/houses";
-
 
 
 // Function to size up the radius of circle markers
@@ -138,7 +134,6 @@ d3.json(local_flask).then(function (response) {
   var robbery = [];
   var simpAssult = [];
   var offencesTotal = [];
-  var totalOffences = [];
   var city = []
 
   var redIcon = new L.Icon({
@@ -310,62 +305,6 @@ d3.json(local_flask).then(function (response) {
   L.control.layers(baseMaps, overlayMaps).addTo(myMap);
 
 });
-
-
-// setup for line chart
-const labels = ["January", "February", "March", "April", "May", "June", "July", "August", "September", " December"];
-const data = {
-  labels: labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      animations: {
-        y: {
-          duration: 2000,
-          delay: 800
-        }
-      },
-      data: { "January": 200, "February": 201, "March": 230, "April": 240, "May": 250, "June": 260, "July": 170, "August": 280, "September": 290, " December": 200 },
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 159, 64, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(75, 192, 192, 1)',
-      ],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.7)',
-        'rgba(255, 159, 64, 0.7)',
-        'rgba(255, 206, 86, 0.7)',
-        'rgba(54, 162, 235, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-
-      ],
-      fill: 1,
-      tension: 0.5
-    },
-    {
-      label: 'Dataset 2',
-      data: { "January": 100, "February": 101, "March": 130, "April": 140, "May": 150, "June": 160, "July": 170, "August": 180, "September": 190, " December": 200 },
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(255, 159, 64, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(75, 192, 192, 1)',
-      ],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.7)',
-        'rgba(255, 159, 64, 0.7)',
-        'rgba(255, 206, 86, 0.7)',
-        'rgba(54, 162, 235, 0.7)',
-        'rgba(75, 192, 192, 0.7)',
-
-      ],
-    }
-  ]
-};
-// end line chart  setup
 
 
 // gauge1 set up
