@@ -80,8 +80,8 @@ function getData() {
         }
       }
       console.log(valString)
-      console.log("https://optimus-realty.herokuapp.com//estimate/" + valString);
-      d3.json("https://optimus-realty.herokuapp.com//estimate/" + valString).then(function (a) {
+      console.log("https://optimusrealestate.herokuapp.com//estimate/" + valString);
+      d3.json("https://optimusrealestate.herokuapp.com//estimate/" + valString).then(function (a) {
         console.log(a);
         d3.select("#estimate").html(`$${a.toLocaleString()}`);
       }).catch(function (a) { console.log(a); });
