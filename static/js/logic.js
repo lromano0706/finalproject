@@ -1,6 +1,6 @@
 // Use local flask API to get Medal and country data
-var local_flask = "https://optimus-realty.herokuapp.com//crimes";
-var local_flask2 = "https://optimus-realty.herokuapp.com//houses";
+var local_flask = "https://optimusrealestate.herokuapp.com//crimes";
+var local_flask2 = "https://optimusrealestate.herokuapp.com//houses";
 
 d3.select("#submit-input").on("click", getData);
 

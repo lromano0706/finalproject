@@ -1,5 +1,5 @@
 // Use local flask API to get Medal and country data
-var local_flask = "https://optimus-realty.herokuapp.com//crimes";
+var local_flask = "https://optimusrealestate.herokuapp.com//crimes";
 
 
 // Call/Response json data from local API
