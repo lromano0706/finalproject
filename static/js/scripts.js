@@ -32,31 +32,3 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 
 });
-
-
-
-
-// creation of line chart that is getting pulled to index page
-
-// var ctx = document.getElementById('myChart').getContext('2d');
-// var myChart = new Chart(ctx, {
-//     type: 'bar',
-//     // data variable is sitting in config.js
-//     data: data,
-//     options: {
-//         animations: {
-//             y: {
-//                 easing: 'easeInOutElastic',
-//                 from: (ctx) => {
-//                     if (ctx.type === 'data') {
-//                         if (ctx.mode === 'default' && !ctx.dropped) {
-//                             ctx.dropped = true;
-//                             return 0;
-//                         }
-//                     }
-//                 }
-
-//             }
-//         }
-//     }
-// });

@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-import tensorflow
+
 
 
 df = pd.read_csv('Data/Clean_Real_Estate_With_Crime.csv')
@@ -16,11 +16,12 @@ X = new_df.drop(["PRICE"],axis=1)
 y = np.log(new_df.PRICE.values)
 
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, MinMaxScaler
-from tensorflow.keras.utils import to_categorical
+from sklearn.preprocessing import MinMaxScaler
+# from sklearn.preprocessing import LabelEncoder
+# from tensorflow.keras.utils import to_categorical
 
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, random_state=42)
+    X, y)
 
 X_scaler = MinMaxScaler().fit(X_train)
 X_train_scaled = X_scaler.transform(X_train)
@@ -38,7 +39,8 @@ model.add(Dense(units=1))
 model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mse'])
 model.fit(X_train_scaled,y_train,validation_split=.15,epochs=80,shuffle=True,verbose=2)
 
-from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor
+# from sklearn.ensemble import RandomForestClassifier
 
 rf = RandomForestRegressor()
 rf.fit(X_train,y_train)
